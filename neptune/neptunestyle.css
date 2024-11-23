@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #2c3e50; /* Dark blue background */
+    color: #fff;
+    line-height: 1.6;
+    padding: 0;
+}
+
+header {
+    background-color: #1a1a1d;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    color: #00bfff; /* Light blue for Neptune theme */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #00bfff; /* Light blue on hover */
+}
+
+main {
+    padding: 50px 20px;
+}
+
+section {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: #00bfff; /* Light blue for section headers */
+    margin-bottom: 20px;
+}
+
+.feature-card {
+    background-color: #34495e; /* Dark grey-blue for card background */
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: scale(1.05);
+    background-color: #00bfff; /* Light blue hover effect */
+    color: #1a1a1d;
+}
+
+#explore-btn {
+    padding: 10px 20px;
+    background-color: #00bfff;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+#explore-btn:hover {
+    background-color: #007b7f;
+}
+
+footer {
+    background-color: #1a1a1d;
+    text-align: center;
+    padding: 10px;
+}
+
+footer p {
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    .feature-card {
+        padding: 15px;
+    }
+
+    #explore-btn {
+        width: 100%;
+    }
+}

@@ -1,0 +1,166 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #fff;
+}
+
+header {
+    background-color:black;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+nav ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+nav ul li a:hover {
+    color: #00d4ff;
+}
+
+button.menu-button {
+    display: none;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 10px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+}
+
+button.menu-button.open {
+    transform: rotate(90deg);
+}
+
+nav ul.open {
+    display: block;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background-color: #00d4ff;
+    padding: 20px;
+    text-align: center;
+}
+
+section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #00d4ff;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 10px 0;
+}
+
+.attraction-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.attraction-card {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 8px;
+    width: 220px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.attraction-card h3 {
+    font-size: 1.5rem;
+    color: #00d4ff;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+label {
+    font-size: 1.1rem;
+}
+
+input, textarea {
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #333;
+    color: #fff;
+}
+
+textarea {
+    resize: vertical;
+    height: 150px;
+}
+
+button[type="submit"] {
+    background-color: #ff5722;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+footer {
+    background-color: #222;
+    text-align: center;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    button.menu-button {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        text-align: left;
+    }
+
+    nav ul.open {
+        display: block;
+    }
+}

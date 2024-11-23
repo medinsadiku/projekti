@@ -1,89 +1,114 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // --- Dynamic Navigation Highlight ---
-    const navLinks = document.querySelectorAll('nav ul li a');
-    const sections = document.querySelectorAll("section");
+const menuIcon = document.getElementById('menu-icon');
+const navLinks = document.querySelector('.nav-links');
+const body = document.body;
 
-    // Function to highlight the active navigation link
-    const updateActiveLink = () => {
-        let currentSection = "";
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            if (pageYOffset >= sectionTop - sectionHeight / 3) {
-                currentSection = section.getAttribute("id");
-            }
-        });
+// Function to toggle the menu visibility
+function toggleMenu() {
+    navLinks.classList.toggle('active');
+    // Add animation for mobile menu
+    if (navLinks.classList.contains('active')) {
+        navLinks.style.animation = 'slideIn 0.3s forwards';
+    } else {
+        navLinks.style.animation = 'slideOut 0.3s forwards';
+    }
+}
 
-        navLinks.forEach(link => {
-            link.classList.remove("active");
-            if (link.getAttribute("href").includes(currentSection)) {
-                link.classList.add("active");
-            }
-        });
-    };
+// Event listener for menu icon click to toggle menu
+menuIcon.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevents click event from propagating to body
+    toggleMenu();
+});
 
-    // Call the function on scroll to update active link
-    window.addEventListener("scroll", updateActiveLink);
-    updateActiveLink();  // Initial call to highlight the active link
+// Close the menu if clicked outside
+body.addEventListener('click', (e) => {
+    if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !menuIcon.contains(e.target)) {
+        toggleMenu(); // Close the menu if clicking outside
+    }
+});
 
-    // --- Smooth Scrolling ---
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function(e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute("href")).scrollIntoView({
-                behavior: "smooth"
-            });
-        });
-    });
+// Smooth scrolling for navigation links
+document.querySelectorAll('.nav-links a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
 
-    // --- Lazy Loading of Images ---
-    const lazyImages = document.querySelectorAll('img.lazy');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;  // Load the image
-                img.classList.remove("lazy");
-                observer.unobserve(img);
-            }
-        });
-    }, { threshold: 0.1 });
-
-    lazyImages.forEach(img => {
-        imageObserver.observe(img);
-    });
-
-    // --- Mobile Navigation (Hamburger Menu) ---
-    const menuButton = document.querySelector('.menu-button');
-    const mobileNav = document.querySelector('nav ul');
-
-    menuButton.addEventListener('click', () => {
-        mobileNav.classList.toggle('open');
-        menuButton.classList.toggle('open');
-    });
-
-    // Close the menu when a navigation link is clicked
-    navLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            if (mobileNav.classList.contains("open")) {
-                mobileNav.classList.remove("open");
-                menuButton.classList.remove("open");
-            }
+        window.scrollTo({
+            top: targetSection.offsetTop - 50,
+            behavior: 'smooth',
         });
     });
+});
 
-    // --- Scroll Animations ---
-    const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
-    const scrollObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("animate");
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.25 });
+// Pricing Card Hover Effects
+const pricingCards = document.querySelectorAll('.pricing-card');
+pricingCards.forEach(card => {
+    card.addEventListener('mouseover', () => {
+        card.style.transform = 'scale(1.05)'; // Slightly scale up the card
+        card.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
+    });
 
-    elementsToAnimate.forEach(el => {
-        scrollObserver.observe(el);
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'scale(1)';
+        card.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+    });
+});
+
+// Handle resizing events for responsiveness
+let resizeTimeout;
+window.addEventListener('resize', () => {
+    // Debounce resize event to improve performance
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        handleResize();
+    }, 200); // Wait 200ms after resize stops before executing function
+});
+
+// Function to handle resizing of the page (responsive adjustments)
+function handleResize() {
+    const width = window.innerWidth;
+    if (width <= 768) {
+        // Mobile-specific adjustments if needed
+        navLinks.style.animation = ''; // Reset animation if resizing back to mobile
+    } else {
+        // Desktop-specific adjustments
+        navLinks.style.animation = ''; // Ensure animation reset for desktop
+    }
+}
+
+// Call the function on initial load
+handleResize();
+
+// Show a scroll-to-top button when scrolled down
+const scrollTopButton = document.createElement('button');
+scrollTopButton.textContent = '↑';
+scrollTopButton.style.position = 'fixed';
+scrollTopButton.style.bottom = '20px';
+scrollTopButton.style.right = '20px';
+scrollTopButton.style.padding = '1rem';
+scrollTopButton.style.borderRadius = '50%';
+scrollTopButton.style.border = 'none';
+scrollTopButton.style.backgroundColor = '#e67e22';
+scrollTopButton.style.color = 'white';
+scrollTopButton.style.display = 'none';
+scrollTopButton.style.cursor = 'pointer';
+scrollTopButton.style.zIndex = '1000';
+
+document.body.appendChild(scrollTopButton);
+
+// Show or hide the scroll-to-top button based on scroll position
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 200) {
+        scrollTopButton.style.display = 'block';
+    } else {
+        scrollTopButton.style.display = 'none';
+    }
+});
+
+// Scroll to the top when the button is clicked
+scrollTopButton.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
     });
 });

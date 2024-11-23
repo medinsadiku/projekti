@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venus Travel Guide</title>
+    <link rel="stylesheet" href="venusstyle.css">
+
+</head>
+<body>
+
+    <!-- Navbar Section -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="#">Venus Travel</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-icon" id="menu-icon">
+                <i class="fa fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Explore Venus</h1>
+        <p>Join our unforgettable tours and explore the beauty of Venus!</p>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <div class="pricing-card">
+            <img src="https://via.placeholder.com/350x200.png?text=Surface+Exploration" alt="Surface Exploration" class="pricing-img">
+            <h3>Venus Surface Exploration</h3>
+            <p>Explore the surface of Venus with our expert-guided tours.</p>
+            <div class="price">$500</div>
+            <button onclick="bookTour('Venus Surface Exploration')">Book Now</button>
+        </div>
+
+        <div class="pricing-card">
+            <img src="https://via.placeholder.com/350x200.png?text=Atmosphere+Study" alt="Atmosphere Study" class="pricing-img">
+            <h3>Venus Atmosphere Study</h3>
+            <p>Study the thick clouds and gases surrounding Venus.</p>
+            <div class="price">$700</div>
+            <button onclick="bookTour('Venus Atmosphere Study')">Book Now</button>
+        </div>
+
+        <div class="pricing-card">
+            <img src="https://via.placeholder.com/350x200.png?text=Orbit+View" alt="Orbit View" class="pricing-img">
+            <h3>Venus Orbit View</h3>
+            <p>Get a breathtaking view of Venus from its orbit.</p>
+            <div class="price">$600</div>
+            <button onclick="bookTour('Venus Orbit View')">Book Now</button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <p>Explore the best travel experiences Venus has to offer.</p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Venus Tours</h2>
+        <p>We offer the best tours to explore Venus, from surface expeditions to orbital views!</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Venus Travel Guide</p>
+    </footer>   
+    
+
+    
+    <script src="venus.js" defer></script>
+</body>
+</html>

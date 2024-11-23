@@ -1,89 +1,55 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // --- Dynamic Navigation Highlight ---
-    const navLinks = document.querySelectorAll('nav ul li a');
-    const sections = document.querySelectorAll("section");
+document.getElementById('menu-icon').addEventListener('click', function() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+    // Smooth transition for menu visibility
+    if (navLinks.classList.contains('active')) {
+        navLinks.style.transition = "transform 0.3s ease-in-out";
+        navLinks.style.transform = "translateY(0)";
+    } else {
+        navLinks.style.transform = "translateY(-100%)";
+    }
+});
 
-    // Function to highlight the active navigation link
-    const updateActiveLink = () => {
-        let currentSection = "";
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            if (pageYOffset >= sectionTop - sectionHeight / 3) {
-                currentSection = section.getAttribute("id");
-            }
-        });
+// Close the menu if the user clicks outside of it
+document.addEventListener('click', function(event) {
+    const navLinks = document.querySelector('.nav-links');
+    const menuIcon = document.getElementById('menu-icon');
+    if (!navLinks.contains(event.target) && !menuIcon.contains(event.target)) {
+        navLinks.classList.remove('active');
+        navLinks.style.transform = "translateY(-100%)"; // Close the menu with a smooth transition
+    }
+});
 
-        navLinks.forEach(link => {
-            link.classList.remove("active");
-            if (link.getAttribute("href").includes(currentSection)) {
-                link.classList.add("active");
-            }
-        });
-    };
+// Dynamic active link highlighting on scroll
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-links a");
 
-    // Call the function on scroll to update active link
-    window.addEventListener("scroll", updateActiveLink);
-    updateActiveLink();  // Initial call to highlight the active link
-
-    // --- Smooth Scrolling ---
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function(e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute("href")).scrollIntoView({
-                behavior: "smooth"
-            });
-        });
+window.addEventListener("scroll", function() {
+    let current = "";
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 50) {
+            current = section.getAttribute("id");
+        }
     });
 
-    // --- Lazy Loading of Images ---
-    const lazyImages = document.querySelectorAll('img.lazy');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;  // Load the image
-                img.classList.remove("lazy");
-                observer.unobserve(img);
-            }
-        });
-    }, { threshold: 0.1 });
-
-    lazyImages.forEach(img => {
-        imageObserver.observe(img);
-    });
-
-    // --- Mobile Navigation (Hamburger Menu) ---
-    const menuButton = document.querySelector('.menu-button');
-    const mobileNav = document.querySelector('nav ul');
-
-    menuButton.addEventListener('click', () => {
-        mobileNav.classList.toggle('open');
-        menuButton.classList.toggle('open');
-    });
-
-    // Close the menu when a navigation link is clicked
     navLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            if (mobileNav.classList.contains("open")) {
-                mobileNav.classList.remove("open");
-                menuButton.classList.remove("open");
-            }
-        });
+        link.classList.remove("active-link");
+        if (link.classList.contains(current)) {
+            link.classList.add("active-link");
+        }
     });
+});
 
-    // --- Scroll Animations ---
-    const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
-    const scrollObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("animate");
-                observer.unobserve(entry.target);
-            }
+// Optional: Scroll to section smoothly when clicking a navigation link
+navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        window.scrollTo({
+            top: targetSection.offsetTop,
+            behavior: 'smooth'
         });
-    }, { threshold: 0.25 });
-
-    elementsToAnimate.forEach(el => {
-        scrollObserver.observe(el);
     });
 });

@@ -1,89 +1,59 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // --- Dynamic Navigation Highlight ---
-    const navLinks = document.querySelectorAll('nav ul li a');
-    const sections = document.querySelectorAll("section");
+document.getElementById("learnMoreBtn").addEventListener("click", function() {
+    alert("Thank you for your interest in learning more about Jupiter! Explore the available tours and book your trip today!");
+});
 
-    // Function to highlight the active navigation link
-    const updateActiveLink = () => {
-        let currentSection = "";
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            if (pageYOffset >= sectionTop - sectionHeight / 3) {
-                currentSection = section.getAttribute("id");
-            }
+// Dynamic Pricing and Tour Selection
+const pricingCards = document.querySelectorAll(".pricing-card");
+const bookingMessages = {
+    "Jupiter Orbit Tour": "You've booked the Jupiter Orbit Tour. Get ready for a great view of the Great Red Spot!",
+    "Europa Exploration": "You've booked the Europa Exploration Tour. Prepare to explore the icy moon of Europa!",
+    "Io Volcano Expedition": "You've booked the Io Volcano Expedition. Witness fiery eruptions and explore a volcanic moon!"
+};
+
+// Function to handle booking the tour
+function bookTour(tourName) {
+    // Show the tour message
+    alert(bookingMessages[tourName]);
+
+    // Store the selected tour in local storage (for persistence)
+    localStorage.setItem("selectedTour", tourName);
+
+    // Update UI to reflect the booking
+    updateBookingStatus();
+}
+
+// Function to update the UI with the booking status (based on localStorage)
+function updateBookingStatus() {
+    const selectedTour = localStorage.getItem("selectedTour");
+    if (selectedTour) {
+        const statusMessage = document.getElementById("bookingStatus");
+        statusMessage.textContent = `You have already booked the ${selectedTour}! Enjoy your journey!`;
+    }
+}
+
+// Function to toggle the visibility of the pricing section on small screens
+const togglePricingButton = document.getElementById("togglePricing");
+togglePricingButton.addEventListener("click", function() {
+    const pricingSection = document.getElementById("pricing");
+    pricingSection.classList.toggle("hidden");
+
+    // Toggle the button text based on visibility
+    if (pricingSection.classList.contains("hidden")) {
+        togglePricingButton.textContent = "Show Pricing";
+    } else {
+        togglePricingButton.textContent = "Hide Pricing";
+    }
+});
+
+// Smooth scroll to sections (for a better mobile experience)
+document.querySelectorAll("a[href^='#']").forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth"
         });
-
-        navLinks.forEach(link => {
-            link.classList.remove("active");
-            if (link.getAttribute("href").includes(currentSection)) {
-                link.classList.add("active");
-            }
-        });
-    };
-
-    // Call the function on scroll to update active link
-    window.addEventListener("scroll", updateActiveLink);
-    updateActiveLink();  // Initial call to highlight the active link
-
-    // --- Smooth Scrolling ---
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function(e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute("href")).scrollIntoView({
-                behavior: "smooth"
-            });
-        });
-    });
-
-    // --- Lazy Loading of Images ---
-    const lazyImages = document.querySelectorAll('img.lazy');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;  // Load the image
-                img.classList.remove("lazy");
-                observer.unobserve(img);
-            }
-        });
-    }, { threshold: 0.1 });
-
-    lazyImages.forEach(img => {
-        imageObserver.observe(img);
-    });
-
-    // --- Mobile Navigation (Hamburger Menu) ---
-    const menuButton = document.querySelector('.menu-button');
-    const mobileNav = document.querySelector('nav ul');
-
-    menuButton.addEventListener('click', () => {
-        mobileNav.classList.toggle('open');
-        menuButton.classList.toggle('open');
-    });
-
-    // Close the menu when a navigation link is clicked
-    navLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            if (mobileNav.classList.contains("open")) {
-                mobileNav.classList.remove("open");
-                menuButton.classList.remove("open");
-            }
-        });
-    });
-
-    // --- Scroll Animations ---
-    const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
-    const scrollObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("animate");
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.25 });
-
-    elementsToAnimate.forEach(el => {
-        scrollObserver.observe(el);
     });
 });
+
+// Initialize booking status on page load
+window.addEventListener("load", updateBookingStatus);

@@ -1,59 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explore Neptune</title>
+    <title>Neptune Travel Guide</title>
     <link rel="stylesheet" href="neptunestyle.css">
-
 </head>
+
 <body>
-    <header>
-        <h1>Explore Neptune: The Mysterious Blue Planet</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About Neptune</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#explore">Explore More</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <!-- About Neptune Section -->
-        <section id="about">
-            <h2>About Neptune</h2>
-            <p>Neptune is the eighth and farthest planet from the Sun in our Solar System. Known for its striking blue color due to methane in its atmosphere, Neptune is a gas giant with intense winds and mysterious storm systems. It is the most distant planet that can be seen with the naked eye.</p>
-        </section>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Neptune Travel</div>
+        <div class="menu-icon">&#9776;</div>
+        <div class="nav-links">
+            <a href="#hero">Home</a>
+            <a href="#about">About</a>
+            <a href="#places">Places</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
 
-        <!-- Features Section -->
-        <section id="features">
-            <h2>Key Features</h2>
-            <div class="feature-card">
-                <h3>The Great Dark Spot</h3>
-                <p>The Great Dark Spot is a massive storm in Neptune's southern hemisphere, similar to Jupiter's Great Red Spot.</p>
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>Embark on a Journey to Neptune</h1>
+            <p>Explore the mysterious blue planet like never before with our guided space tours</p>
+            <a href="#pricing" class="btn">Book Your Trip</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About Neptune</h2>
+        <p>Neptune, the eighth planet from the Sun, is a blue world of icy winds, storms, and mysterious landscapes. With our space tours, you can explore its magnificent moons, stunning rings, and enigmatic atmosphere. Ready for an unforgettable adventure?</p>
+    </section>
+
+    <!-- Places to Visit Section -->
+    <section id="places" class="places">
+        <h2>Popular Places to Visit on Neptune</h2>
+        <div class="place-cards">
+            <div class="place-card">
+                <h3>Triton</h3>
+                <p>Triton is Neptune's largest moon. It is known for its frozen surface, geysers, and retrograde orbit. Experience this alien world and explore its icy volcanoes.</p>
+                <div class="countdown" id="countdown-triton">Loading...</div>
             </div>
-            <div class="feature-card">
-                <h3>Fast Winds</h3>
-                <p>Neptune has the fastest winds in the Solar System, with speeds reaching over 1,500 miles per hour.</p>
+            <div class="place-card">
+                <h3>Neptune's Rings</h3>
+                <p>The rings of Neptune are faint but beautiful. Made up of ice particles and dust, they are best viewed from close range. Witness the grandeur of these ancient structures.</p>
+                <div class="countdown" id="countdown-rings">Loading...</div>
             </div>
-            <div class="feature-card">
-                <h3>Triton: Neptune's Largest Moon</h3>
-                <p>Triton orbits Neptune in the opposite direction of the planet's rotation and is one of the few geologically active moons in the Solar System.</p>
+            <div class="place-card">
+                <h3>Great Dark Spot</h3>
+                <p>The Great Dark Spot is a massive storm on Neptune, similar to Jupiter's Great Red Spot. It's a fascinating natural phenomenon and a must-see destination.</p>
+                <div class="countdown" id="countdown-spot">Loading...</div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Explore More Section -->
-        <section id="explore">
-            <h2>Explore More</h2>
-            <p>Are you curious to learn more about Neptune? Click below to start your space journey to one of the most fascinating planets in our Solar System!</p>
-            <button id="explore-btn">Explore Neptune</button>
-        </section>
-    </main>
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <h2>Pricing for Neptune Tours</h2>
+        <div class="price-cards">
+            <div class="price-card">
+                <h3>Standard Tour</h3>
+                <p class="price">$150,000</p>
+                <button>Book Now</button>
+            </div>
+            <div class="price-card">
+                <h3>Luxury Tour</h3>
+                <p class="price">$300,000</p>
+                <button>Book Now</button>
+            </div>
+            <div class="price-card">
+                <h3>Ultimate Adventure</h3>
+                <p class="price">$500,000</p>
+                <button>Book Now</button>
+            </div>
+        </div>
+    </section>
 
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Explore Neptune. All rights reserved.</p>
+        <p>&copy; 2024 Neptune Travel. All Rights Reserved.</p>
     </footer>
+
     <script src="neptune.js"></script>
 </body>
+
 </html>

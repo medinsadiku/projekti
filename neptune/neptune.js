@@ -1,89 +1,85 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // --- Dynamic Navigation Highlight ---
-    const navLinks = document.querySelectorAll('nav ul li a');
-    const sections = document.querySelectorAll("section");
+// Improved Countdown Timer for Neptune Trips
+document.addEventListener("DOMContentLoaded", function () {
+    // Helper function to update countdown timers
+    function updateCountdown(placeId, departureDate) {
+        const countdownElement = document.getElementById(placeId);
 
-    // Function to highlight the active navigation link
-    const updateActiveLink = () => {
-        let currentSection = "";
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            if (pageYOffset >= sectionTop - sectionHeight / 3) {
-                currentSection = section.getAttribute("id");
+        // Initial state - Loading message while the countdown is initialized
+        countdownElement.innerHTML = "Calculating Time...";
+
+        const timer = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = departureDate - now;
+
+            // Calculate time remaining
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (distance < 0) {
+                clearInterval(timer);
+                countdownElement.innerHTML = "The trip has departed!";
+                countdownElement.style.color = "#ff6b6b";
+                countdownElement.style.fontSize = "18px";
+            } else {
+                // Dynamically update countdown every second
+                countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+                countdownElement.style.color = "#ffcc00";
+                countdownElement.style.fontSize = "22px";
             }
-        });
+        }, 1000);
+    }
 
-        navLinks.forEach(link => {
-            link.classList.remove("active");
-            if (link.getAttribute("href").includes(currentSection)) {
-                link.classList.add("active");
-            }
-        });
-    };
+    // Set specific departure times for each destination (example: UTC date)
+    const tritonDeparture = new Date("2025-06-01T12:00:00Z");
+    const ringsDeparture = new Date("2025-08-01T12:00:00Z");
+    const spotDeparture = new Date("2025-10-01T12:00:00Z");
 
-    // Call the function on scroll to update active link
-    window.addEventListener("scroll", updateActiveLink);
-    updateActiveLink();  // Initial call to highlight the active link
+    // Initialize countdowns for each location with some transition delay
+    updateCountdown("countdown-triton", tritonDeparture);
+    updateCountdown("countdown-rings", ringsDeparture);
+    updateCountdown("countdown-spot", spotDeparture);
 
-    // --- Smooth Scrolling ---
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function(e) {
+    // Ensure smooth transitions and additional interactivity
+    addSmoothScroll();
+    initNavbarResponsive();
+    setupBookingButtons();
+});
+
+// Smooth scrolling for anchor links
+function addSmoothScroll() {
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    anchorLinks.forEach(link => {
+        link.addEventListener("click", function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute("href")).scrollIntoView({
+            const targetId = this.getAttribute("href").substring(1);
+            const targetElement = document.getElementById(targetId);
+            window.scrollTo({
+                top: targetElement.offsetTop - 70, // Adjust for fixed navbar height
                 behavior: "smooth"
             });
         });
     });
+}
 
-    // --- Lazy Loading of Images ---
-    const lazyImages = document.querySelectorAll('img.lazy');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;  // Load the image
-                img.classList.remove("lazy");
-                observer.unobserve(img);
-            }
-        });
-    }, { threshold: 0.1 });
+// Toggle the Navbar on small screens (responsive)
+function initNavbarResponsive() {
+    const menuIcon = document.querySelector(".menu-icon");
+    const navLinks = document.querySelector(".nav-links");
 
-    lazyImages.forEach(img => {
-        imageObserver.observe(img);
+    menuIcon.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        menuIcon.classList.toggle("active");
     });
+}
 
-    // --- Mobile Navigation (Hamburger Menu) ---
-    const menuButton = document.querySelector('.menu-button');
-    const mobileNav = document.querySelector('nav ul');
-
-    menuButton.addEventListener('click', () => {
-        mobileNav.classList.toggle('open');
-        menuButton.classList.toggle('open');
-    });
-
-    // Close the menu when a navigation link is clicked
-    navLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            if (mobileNav.classList.contains("open")) {
-                mobileNav.classList.remove("open");
-                menuButton.classList.remove("open");
-            }
+// Activate booking button functionality (for demonstration)
+function setupBookingButtons() {
+    const bookButtons = document.querySelectorAll(".price-card button");
+    bookButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            alert("Booking functionality is coming soon!");
         });
     });
-
-    // --- Scroll Animations ---
-    const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
-    const scrollObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("animate");
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.25 });
-
-    elementsToAnimate.forEach(el => {
-        scrollObserver.observe(el);
-    });
-});
+}

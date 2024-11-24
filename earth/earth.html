@@ -3,85 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Earth - Solar System AI Travel Guide</title>
+    <meta name="description" content="Explore Earth like never before. Your ultimate travel guide to the best places on Earth, with trip prices, details, and departure countdowns.">
+    <meta name="author" content="Travel Agency">
+    <title>Earth Travel Guide</title>
     <link rel="stylesheet" href="earthstyle.css">
+    <script defer src="earth.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Solar System AI Travel Guide</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about-us.html">About Us</a></li>
-                <li><a href="earth.html" class="active">Earth</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-        </nav>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <h1>Earth Travel</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#places">Destinations</a></li>
+            <li><a href="#contact-us">Contact</a></li>
+        </ul>
+        <div class="menu-icon">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h2>Discover the Wonders of Earth</h2>
+            <p>Travel to the most iconic destinations around the world</p>
+            <button id="explore-btn">Explore Now</button>
+        </div>
     </header>
 
-    <main>
-        <!-- Earth Section -->
-        <section id="earth-section">
-            <h2>Welcome to Earth</h2>
-            <p>
-                Earth is the only known planet in our solar system to support life, with diverse landscapes ranging from lush forests to vast oceans and towering mountains. Explore the unique features of Earth and experience the beauty of nature like never before.
-            </p>
-
-            <h3>Key Earth Features</h3>
-            <ol>
-                <li><strong>Blue Planet:</strong> Earth is often called the "Blue Planet" because of its vast oceans and atmosphere.</li>
-                <li><strong>Life-Supporting Environment:</strong> The presence of water and oxygen makes Earth a cradle for life.</li>
-                <li><strong>Climate and Seasons:</strong> Earth experiences diverse climates and seasonal changes based on its axial tilt.</li>
-                <li><strong>Natural Wonders:</strong> From the Amazon Rainforest to the Grand Canyon, Earth is home to many natural wonders.</li>
-            </ol>
-
-            <h3>Must-See Locations on Earth</h3>
-            <ul>
-                <li>The Great Barrier Reef, Australia</li>
-                <li>The Sahara Desert, Africa</li>
-                <li>The Himalayas, Asia</li>
-                <li>The Amazon Rainforest, South America</li>
-                <li>The Northern Lights, Arctic</li>
-            </ul>
-
-            <h3>What Travelers Say About Earth</h3>
-            <blockquote>
-                <p>"A trip to Earth was an eye-opening experience. From the bustling cities to the untouched wilderness, there's something for everyone!"</p>
-                <footer>- Alex & Mia, Australia</footer>
-            </blockquote>
-
-            <p>
-                Ready to start your Earth adventure? Let our AI Travel Guide show you the best places to visit on our home planet!
-            </p>
-        </section>
-
-        <!-- Earth Planet Exploration -->
-        <section id="earth-planet-exploration">
-            <h2>Explore Earth from Space</h2>
-            <div class="planet-grid">
-                <div class="planet-card" id="oceans">
-                    <h3>Oceans</h3>
-                    <p>Earth's oceans cover over 70% of the planet's surface and are home to incredible marine life.</p>
+    <!-- Popular Destinations Section -->
+    <section id="places" class="places">
+        <div class="container">
+            <h2 class="section-title">Popular Destinations</h2>
+            <div class="place-cards">
+                <div class="place-card">
+                    <img src="https://via.placeholder.com/300x200?text=Paris" alt="Paris">
+                    <h3>Paris</h3>
+                    <p>Experience romance, art, and culture in the heart of Europe.</p>
+                    <p class="price">$999</p>
+                    <div id="countdown-paris" class="countdown"></div>
+                    <button class="btn-primary">Book Now</button>
                 </div>
-                <div class="planet-card" id="mountains">
-                    <h3>Mountains</h3>
-                    <p>From the peaks of the Himalayas to the Andes, Earth's mountains offer breathtaking views.</p>
+
+                <div class="place-card">
+                    <img src="https://via.placeholder.com/300x200?text=Tokyo" alt="Tokyo">
+                    <h3>Tokyo</h3>
+                    <p>Where tradition meets innovation. Explore the wonders of Tokyo.</p>
+                    <p class="price">$1200</p>
+                    <div id="countdown-tokyo" class="countdown"></div>
+                    <button class="btn-primary">Book Now</button>
                 </div>
-                <div class="planet-card" id="forests">
-                    <h3>Forests</h3>
-                    <p>The Amazon, the Congo, and other lush forests are vital to Earth's biodiversity and ecosystem.</p>
-                </div>
-                <div class="planet-card" id="cities">
-                    <h3>Cities</h3>
-                    <p>Explore Earth's vibrant cities with their rich cultures, history, and modern architecture.</p>
+
+                <div class="place-card">
+                    <img src="https://via.placeholder.com/300x200?text=New+York" alt="New York">
+                    <h3>New York</h3>
+                    <p>The city that never sleeps, full of energy and excitement.</p>
+                    <p class="price">$800</p>
+                    <div id="countdown-nyc" class="countdown"></div>
+                    <button class="btn-primary">Book Now</button>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact-us" class="contact-us">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Enter your message"></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary">Send Message</button>
+            </form>
+
+            <!-- Success/Error Message -->
+            <div id="response-message" class="response-message"></div>
+        </div>
+    </section>
 
     <footer>
-        <p>&copy; 2024 Solar System AI Travel Guide. All rights reserved.</p>
+        <p>&copy; 2024 Earth Travel Guide | All rights reserved</p>
     </footer>
-    <script src="earth.js" defer></script>
 </body>
 </html>

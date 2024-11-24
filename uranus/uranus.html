@@ -3,62 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover the amazing travel destinations on Uranus. Book your space adventure today!">
+    <meta name="author" content="Uranus Travel Agency">
     <title>Uranus Travel Guide</title>
+    
+    <!-- Link to External Stylesheet -->
     <link rel="stylesheet" href="uranusstyle.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="uranus-favicon.ico" type="image/x-icon">
+    
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="logo">
-            <a href="#">Uranus Tours</a>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div id="menu-icon" class="menu-icon">☰</div>
-    </nav>
+    <!-- Header Section with Navbar -->
+    <header>
+        <nav>
+            <div class="logo">Uranus Travel Guide</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#places">Destinations</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section id="hero">
-        <h1>Explore the Wonders of Uranus</h1>
-        <p>Book your adventure today!</p>
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>Journey to Uranus</h1>
+            <p>Embark on a once-in-a-lifetime journey to the mysterious and stunning planet Uranus. Explore its beautiful rings and moons!</p>
+            <a href="#places" class="cta-button">Explore Now</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Uranus</h2>
+            <p>Uranus, the seventh planet from the Sun, is a beautiful blue-green giant with an icy atmosphere and unique tilted rotation. It's an adventurer's dream with icy rings and moons waiting to be explored!</p>
+        </div>
+    </section>
+
+    <!-- Places to Visit Section -->
+    <section id="places" class="places">
+        <h2>Top Places to Visit on Uranus</h2>
+        <div class="place-card">
+            <h3>The Rings of Uranus</h3>
+            <p>Explore the stunning ice rings that surround Uranus. A breathtaking sight and a must-see for space adventurers.</p>
+            <p><strong>Pricing:</strong> $3,000</p>
+            <p><strong>Departure in:</strong> <span id="countdown-rings"></span></p>
+            <button>Book Now</button>
+        </div>
+
+        <div class="place-card">
+            <h3>The Ice Moons</h3>
+            <p>Travel to the frozen moons of Uranus, where vast ice landscapes and mysterious craters await.</p>
+            <p><strong>Pricing:</strong> $3,800</p>
+            <p><strong>Departure in:</strong> <span id="countdown-moons"></span></p>
+            <button>Book Now</button>
+        </div>
+
+        <div class="place-card">
+            <h3>The Atmosphere Tour</h3>
+            <p>Experience the extreme winds and icy storms that rage through Uranus' atmosphere. A thrilling and cold adventure!</p>
+            <p><strong>Pricing:</strong> $4,500</p>
+            <p><strong>Departure in:</strong> <span id="countdown-atmosphere"></span></p>
+            <button>Book Now</button>
+        </div>
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing">
-        <div class="pricing-card">
-            <h3>Basic Tour</h3>
-            <div class="price">$500</div>
-            <p>A 3-day tour to explore the moon of Uranus.</p>
-            <button class="book-now">Book Now</button>
-        </div>
-        <div class="pricing-card">
-            <h3>Deluxe Tour</h3>
-            <div class="price">$1200</div>
-            <p>A 7-day deluxe tour with premium services.</p>
-            <button class="book-now">Book Now</button>
-        </div>
-        <div class="pricing-card">
-            <h3>Exclusive Tour</h3>
-            <div class="price">$2500</div>
-            <p>Exclusive 10-day tour with private accommodations and VIP services.</p>
-            <button class="book-now">Book Now</button>
+    <section id="pricing" class="pricing">
+        <h2>Choose Your Package</h2>
+        <div class="pricing-table">
+            <div class="pricing-card">
+                <h3>Basic Package</h3>
+                <p>Explore the Rings of Uranus for a 7-day adventure with basic accommodations.</p>
+                <div class="price">$3,000</div>
+                <button>Book Now</button>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Standard Package</h3>
+                <p>Visit the Ice Moons for 10 days, with premium accommodation and moon exploration tours.</p>
+                <div class="price">$3,800</div>
+                <button>Book Now</button>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Premium Package</h3>
+                <p>Experience the Rings, Moons, and Atmosphere Tour, including luxury accommodations and private tours.</p>
+                <div class="price">$6,000</div>
+                <button>Book Now</button>
+            </div>
         </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <form id="contactForm">
-            <input type="text" id="name" placeholder="Your Name" required>
-            <input type="email" id="email" placeholder="Your Email" required>
-            <textarea id="message" placeholder="Your Message" required></textarea>
-            <button type="submit">Submit</button>
-        </form>
-    </section>
+    <!-- Contact Section -->
+    
 
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Uranus Travel Agency. All rights reserved.</p>
+    </footer>
+
+    <!-- Link to External JavaScript File -->
     <script src="uranus.js"></script>
+    <!-- Font Awesome for the hamburger menu icon -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </body>
 </html>

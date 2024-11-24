@@ -1,55 +1,84 @@
-document.getElementById('menu-icon').addEventListener('click', function() {
-    const navLinks = document.querySelector('.nav-links');
-    navLinks.classList.toggle('active');
-    // Smooth transition for menu visibility
-    if (navLinks.classList.contains('active')) {
-        navLinks.style.transition = "transform 0.3s ease-in-out";
-        navLinks.style.transform = "translateY(0)";
-    } else {
-        navLinks.style.transform = "translateY(-100%)";
-    }
-});
+document.addEventListener("DOMContentLoaded", function () {
+    // Define departure dates for each destination
+    const departureDates = {
+        highlands: new Date("2025-06-01T12:00:00Z"),
+        volcanoes: new Date("2025-07-15T12:00:00Z"),
+        cloudCity: new Date("2025-09-01T12:00:00Z")
+    };
 
-// Close the menu if the user clicks outside of it
-document.addEventListener('click', function(event) {
-    const navLinks = document.querySelector('.nav-links');
-    const menuIcon = document.getElementById('menu-icon');
-    if (!navLinks.contains(event.target) && !menuIcon.contains(event.target)) {
-        navLinks.classList.remove('active');
-        navLinks.style.transform = "translateY(-100%)"; // Close the menu with a smooth transition
-    }
-});
-
-// Dynamic active link highlighting on scroll
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".nav-links a");
-
-window.addEventListener("scroll", function() {
-    let current = "";
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (pageYOffset >= sectionTop - 50) {
-            current = section.getAttribute("id");
-        }
+    // Initialize countdowns for each destination
+    Object.keys(departureDates).forEach(destination => {
+        const countdownElement = document.getElementById(`countdown-${destination}`);
+        startCountdown(countdownElement, departureDates[destination]);
     });
 
-    navLinks.forEach(link => {
-        link.classList.remove("active-link");
-        if (link.classList.contains(current)) {
-            link.classList.add("active-link");
+    // Initialize Smooth Scroll for navigation
+    enableSmoothScroll();
+
+    // Initialize Navbar responsiveness
+    initNavbarResponsive();
+
+    // Change navbar style on scroll
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
         }
     });
 });
 
-// Optional: Scroll to section smoothly when clicking a navigation link
-navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetSection = document.getElementById(targetId);
-        window.scrollTo({
-            top: targetSection.offsetTop,
-            behavior: 'smooth'
+// Countdown timer function
+function startCountdown(countdownElement, departureDate) {
+    const timer = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = departureDate - now;
+
+        if (distance < 0) {
+            clearInterval(timer);
+            countdownElement.textContent = "The trip has departed!";
+            countdownElement.style.color = "#ff6b6b";
+        } else {
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            countdownElement.style.color = "#ffcc00";
+        }
+    }, 1000);
+}
+
+// Smooth scroll function for anchor links
+function enableSmoothScroll() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetID = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetID);
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,  // Account for fixed navbar
+                behavior: 'smooth'
+            });
         });
     });
-});
+}
+
+// Navbar responsive toggle
+function initNavbarResponsive() {
+    const menuIcon = document.querySelector(".menu-icon");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuIcon.addEventListener('click', () => {
+        navLinks.classList.toggle("active");
+    });
+
+    // Close navbar if clicked outside
+    document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !menuIcon.contains(e.target)) {
+            navLinks.classList.remove("active");
+        }
+    });
+}

@@ -7,85 +7,94 @@
     <link rel="stylesheet" href="marsstyle.css">
 </head>
 <body>
-    <header>
-        <h1>Mars Travel Guide</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About Mars</a></li>
-                <li><a href="#attractions">Attractions</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-            </ul>
-        </nav>
-        <button class="menu-button">&#9776;</button>
-    </header>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Mars Travel</div>
+        <div class="menu-icon">&#9776;</div>
+        <div class="nav-links">
+            <a href="#hero">Home</a>
+            <a href="#about">About</a>
+            <a href="#places">Places</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
 
-    <main>
-        <!-- About Mars Section -->
-        <section id="about">
-            <h2>Welcome to Mars</h2>
-            <p>
-                Mars, the Red Planet, has captivated humans for centuries. It is the fourth planet from the Sun, known for its reddish appearance due to iron oxide (rust) on its surface. Join us as we explore this fascinating world with its towering volcanoes and massive canyons.
-            </p>
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>Journey to Mars Awaits</h1>
+            <p>Discover the Red Planet and explore its landscapes like never before</p>
+            <a href="#pricing" class="btn">Book Your Trip</a>
+        </div>
+    </section>
 
-            <h3>Fun Facts</h3>
-            <ul>
-                <li>Mars is home to the largest volcano in the solar system, Olympus Mons.</li>
-                <li>The planet has two moons: Phobos and Deimos.</li>
-                <li>Mars has seasons similar to Earth, though they are twice as long.</li>
-            </ul>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About Mars</h2>
+        <p>Mars, the fourth planet from the Sun, is a cold desert with fascinating landscapes, volcanoes, and canyons. Our tours will take you to the best spots to explore the Martian terrain, from Olympus Mons to the Valles Marineris. Get ready for an adventure out of this world!</p>
+    </section>
 
-            <h3>Why Visit Mars?</h3>
-            <ul>
-                <li>Explore the largest volcano in the solar system.</li>
-                <li>Visit Valles Marineris, the deepest canyon on any planet.</li>
-                <li>Witness the sunset on the Red Planet — a unique experience!</li>
-            </ul>
-        </section>
-
-        <!-- Mars Attractions Section -->
-        <section id="attractions">
-            <h2>Mars Attractions</h2>
-            <div class="attraction-grid">
-                <div class="attraction-card">
-                    <h3>Olympus Mons</h3>
-                    <p>Explore the largest volcano in the solar system — 13.6 miles high and 370 miles in diameter!</p>
-                </div>
-                <div class="attraction-card">
-                    <h3>Valles Marineris</h3>
-                    <p>This canyon system stretches over 2,500 miles long and up to 7 miles deep.</p>
-                </div>
-                <div class="attraction-card">
-                    <h3>Polar Ice Caps</h3>
-                    <p>Visit Mars’ polar regions and see the ice caps made of frozen water and CO2.</p>
-                </div>
-                <div class="attraction-card">
-                    <h3>Phobos and Deimos</h3>
-                    <p>Explore Mars’ moons, which are thought to be captured asteroids from the asteroid belt.</p>
-                </div>
+    <!-- Places to Visit Section -->
+    <section id="places" class="places">
+        <h2>Popular Places to Visit on Mars</h2>
+        <div class="place-cards">
+            <div class="place-card">
+                <h3>Olympus Mons</h3>
+                <p>The largest volcano in the solar system, Olympus Mons stands 13.6 miles (22 km) high. Explore this Martian giant and witness the stunning views from its summit.</p>
+                <div class="countdown" id="countdown-olympus">Loading...</div>
             </div>
-        </section>
+            <div class="place-card">
+                <h3>Valles Marineris</h3>
+                <p>This canyon system is over 4,000 km long and 7 km deep. A trek through Valles Marineris offers breathtaking views of Mars' rocky landscape.</p>
+                <div class="countdown" id="countdown-valles">Loading...</div>
+            </div>
+            <div class="place-card">
+                <h3>Polar Ice Caps</h3>
+                <p>Visit Mars' polar ice caps and explore the frozen regions at the north and south poles. The ice caps are a spectacular sight, especially during the Martian winter.</p>
+                <div class="countdown" id="countdown-polar">Loading...</div>
+            </div>
+        </div>
+    </section>
 
-        <!-- Contact Us Section -->
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <form id="contact-form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <h2>Pricing for Mars Tours</h2>
+        <div class="price-cards">
+            <div class="price-card">
+                <h3>Standard Tour</h3>
+                <p class="price">$250,000</p>
+                <button>Book Now</button>
+            </div>
+            <div class="price-card">
+                <h3>Luxury Tour</h3>
+                <p class="price">$500,000</p>
+                <button>Book Now</button>
+            </div>
+            <div class="price-card">
+                <h3>Ultimate Adventure</h3>
+                <p class="price">$750,000</p>
+                <button>Book Now</button>
+            </div>
+        </div>
+    </section>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
 
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea>
-
-                <button type="submit">Submit</button>
-            </form>
-        </section>
-    </main>
-
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Mars Travel Guide. All rights reserved.</p>
+        <p>&copy; 2024 Mars Travel. All Rights Reserved.</p>
     </footer>
+
     <script src="mars.js"></script>
 </body>
 </html>

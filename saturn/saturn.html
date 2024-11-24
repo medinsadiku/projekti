@@ -3,56 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explore Saturn</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Visit Saturn - A Space Adventure Awaits!</title>
     <link rel="stylesheet" href="saturnstyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Explore Saturn: The Ringed Giant</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About Saturn</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#explore">Explore More</a></li>
-            </ul>
-        </nav>
+        <div class="navbar">
+            <div class="logo">
+                <h1>Visit Saturn</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="menu-icon" onclick="toggleMenu()">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
     </header>
 
-    <main>
-        <!-- About Saturn Section -->
-        <section id="about">
-            <h2>About Saturn</h2>
-            <p>Saturn is the sixth planet from the Sun and is best known for its stunning ring system, composed mostly of ice and rock particles. Saturn is a gas giant with a diameter nine times that of Earth and has more than 80 moons, including the largest moon, Titan.</p>
-        </section>
+    <section id="overview" class="intro">
+        <div class="container">
+            <h2>Embark on the Ultimate Space Adventure</h2>
+            <p>Explore the wonders of Saturn and its rings. Enjoy breathtaking views from orbit, visit Titan, and be part of a historic space tour!</p>
+            <button id="learnMoreBtn">Learn More</button>
+        </div>
+    </section>
 
-        <!-- Features Section -->
-        <section id="features">
-            <h2>Key Features</h2>
-            <div class="feature-card">
-                <h3>The Rings of Saturn</h3>
-                <p>Saturn's iconic rings are made of ice and rock particles, and they are the most prominent and complex ring system of any planet in the Solar System.</p>
+    <section id="pricing" class="pricing">
+        <h2>Pricing</h2>
+        <div class="price-container">
+            <div class="price-card">
+                <h3>Basic Package</h3>
+                <p>1 Week Tour</p>
+                <p class="price">$5,000,000</p>
+                <button onclick="showDetails('basic')">Details</button>
             </div>
-            <div class="feature-card">
-                <h3>Titan: Saturn's Largest Moon</h3>
-                <p>Titan, Saturn's largest moon, is the only moon in the Solar System with a thick atmosphere and liquid lakes made of methane and ethane.</p>
+            <div class="price-card">
+                <h3>Premium Package</h3>
+                <p>2 Week Tour with VIP Access</p>
+                <p class="price">$10,000,000</p>
+                <button onclick="showDetails('premium')">Details</button>
             </div>
-            <div class="feature-card">
-                <h3>Storms on Saturn</h3>
-                <p>Saturn experiences powerful storms, including the Great White Spot, a massive storm that appears every 30 Earth years.</p>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Explore More Section -->
-        <section id="explore">
-            <h2>Explore More</h2>
-            <p>Ready to explore Saturn and its magnificent rings? Click below to dive deeper into the mysteries of this amazing planet!</p>
-            <button id="explore-btn">Explore Saturn</button>
-        </section>
-    </main>
+    <section id="features" class="features">
+        <h2>Why Visit Saturn?</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <h3>Spacewalks</h3>
+                <p>Experience the thrill of walking in space while orbiting Saturn's stunning rings.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Exclusive Access to Titan</h3>
+                <p>Explore the mysterious moon of Titan, with its vast seas of methane and unique landscape.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Private Shuttle</h3>
+                <p>Travel in style aboard a private shuttle designed for comfort and safety.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <h2>What Our Travelers Say</h2>
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <p>"An unforgettable experience! The views from Saturn's rings were like nothing I've ever seen. The team was fantastic!"</p>
+                <h4>- Emily R.</h4>
+            </div>
+            <div class="testimonial">
+                <p>"Visiting Titan was surreal. I never thought I'd experience another planet so closely. Worth every penny!"</p>
+                <h4>- John M.</h4>
+            </div>
+        </div>
+    </section>
+
+    <section id="countdown" class="countdown">
+        <h2>Next Mission Departure</h2>
+        <div id="timer"></div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
 
     <footer>
-        <p>&copy; 2024 Explore Saturn. All rights reserved.</p>
+        <p>&copy; 2024 Visit Saturn. All Rights Reserved.</p>
     </footer>
+
     <script src="saturn.js"></script>
 </body>
 </html>

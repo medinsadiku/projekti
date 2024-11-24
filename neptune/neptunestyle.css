@@ -6,108 +6,256 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #2c3e50; /* Dark blue background */
+    background-color: #00334d;
     color: #fff;
-    line-height: 1.6;
-    padding: 0;
 }
 
-header {
-    background-color: #1a1a1d;
-    padding: 20px;
-    text-align: center;
-}
-
-header h1 {
-    color: #00bfff; /* Light blue for Neptune theme */
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: #fff;
+a {
     text-decoration: none;
+    color: inherit;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #00233b;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-size: 24px;
     font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links a {
+    margin-left: 20px;
+    color: white;
+    font-size: 16px;
     transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
-    color: #00bfff; /* Light blue on hover */
+.nav-links a:hover {
+    color: #4d94b7;
 }
 
-main {
-    padding: 50px 20px;
-}
-
-section {
-    margin-bottom: 50px;
+/* Hero Section */
+.hero {
+    background-image: url('images/neptune-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    color: white;
 }
 
-h2 {
-    font-size: 2.5rem;
-    color: #00bfff; /* Light blue for section headers */
+.hero h1 {
+    font-size: 48px;
+    font-weight: bold;
     margin-bottom: 20px;
 }
 
-.feature-card {
-    background-color: #34495e; /* Dark grey-blue for card background */
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+.hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
 }
 
-.feature-card:hover {
-    transform: scale(1.05);
-    background-color: #00bfff; /* Light blue hover effect */
-    color: #1a1a1d;
-}
-
-#explore-btn {
-    padding: 10px 20px;
-    background-color: #00bfff;
+.hero .btn {
+    padding: 12px 25px;
+    background-color: #4d94b7;
     border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-#explore-btn:hover {
-    background-color: #007b7f;
+.hero .btn:hover {
+    background-color: #2b5d71;
 }
 
-footer {
-    background-color: #1a1a1d;
+/* About Section */
+.about {
+    padding: 60px 20px;
+    background-color: #00233b;
+    color: white;
     text-align: center;
+}
+
+.about h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.about p {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+/* Places Section */
+.places {
+    padding: 60px 20px;
+    background-color: #00334d;
+    color: white;
+    text-align: center;
+}
+
+.places h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.place-cards {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.place-card {
+    background-color: #004c66;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.place-card:hover {
+    transform: scale(1.05);
+}
+
+.place-card h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.place-card p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.countdown {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffcc00;
+}
+
+/* Pricing Section */
+.pricing {
+    padding: 60px 20px;
+    background-color: #00233b;
+    text-align: center;
+}
+
+.pricing h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.price-cards {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.price-card {
+    background-color: #4d94b7;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.price-card:hover {
+    transform: scale(1.05);
+}
+
+.price-card h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.price-card .price {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.price-card button {
+    background-color: #2b5d71;
+    border: none;
+    color: white;
     padding: 10px;
+    font-size: 18px;
 }
 
-footer p {
-    color: #fff;
+.price-card button:hover {
+    background-color: #1b3b52;
 }
 
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-    }
+/* Contact Section */
+.contact {
+    padding: 60px 20px;
+    background-color: #00334d;
+    color: white;
+    text-align: center;
+}
 
-    .feature-card {
-        padding: 15px;
-    }
+.contact h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+}
 
-    #explore-btn {
-        width: 100%;
-    }
+.contact form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    color: #333;
+}
+
+.contact button {
+    padding: 15px;
+    font-size: 18px;
+    background-color: #4d94b7;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact button:hover {
+    background-color: #2b5d71;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #00233b;
+    color: white;
 }

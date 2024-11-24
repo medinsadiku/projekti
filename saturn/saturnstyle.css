@@ -5,109 +5,274 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #2c3e50; /* Dark blue background */
+    font-family: 'Roboto', sans-serif;
+    background-color: #0b0c10;
     color: #fff;
-    line-height: 1.6;
-    padding: 0;
 }
 
-header {
-    background-color: #1a1a1d;
-    padding: 20px;
-    text-align: center;
+h1, h2, h3 {
+    font-weight: 700;
+    color: #f39c12;
 }
 
-header h1 {
-    color: #00d4ff; /* Gold color to reflect Saturn's golden hue */
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: #fff;
+a {
+    color: #f39c12;
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
-    color: #373694; /* Gold color on hover */
+a:hover {
+    text-decoration: underline;
 }
 
-main {
-    padding: 50px 20px;
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
 }
 
-section {
-    margin-bottom: 50px;
-    text-align: center;
+.navbar .logo h1 {
+    font-size: 1.8em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
-h2 {
-    font-size: 2.5rem;
-    color: #00d4ff; /* Gold color for section headers */
-    margin-bottom: 20px;
+.nav-links {
+    display: flex;
+    gap: 30px;
 }
 
-.feature-card {
-    background-color: #34495e; /* Dark grey-blue for card background */
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+.nav-links li {
+    list-style: none;
 }
 
-.feature-card:hover {
-    transform: scale(1.05);
-    background-color: #00d4ff; /* Gold color hover effect */
-    color: #1a1a1d;
+.nav-links li a {
+    font-size: 1.2em;
+    color: #fff;
+    padding: 8px 15px;
 }
 
-#explore-btn {
-    padding: 10px 20px;
-    background-color: #00d4ff;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.nav-links li a:hover {
+    background-color: #f39c12;
+    color: #0b0c10;
     border-radius: 5px;
 }
 
-#explore-btn:hover {
-    background-color: #00d4ff;
+.menu-icon {
+    display: none;
+    cursor: pointer;
 }
 
-footer {
-    background-color: #1a1a1d;
+.menu-icon .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px;
+}
+
+/* Hero Section */
+.intro {
+    background: url('saturn-header.jpg') no-repeat center center/cover;
+    color: white;
     text-align: center;
+    padding: 100px 20px;
+    min-height: 100vh;
+}
+
+.intro h2 {
+    font-size: 3.5em;
+    font-weight: 700;
+}
+
+.intro button {
+    background-color: #f39c12;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 1.1em;
+    border-radius: 5px;
+}
+
+.intro button:hover {
+    background-color: #e67e22;
+}
+
+/* Pricing Section */
+.pricing {
+    background-color: #2c3e50;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.price-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.price-card {
+    background-color: #34495e;
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.price-card h3 {
+    font-size: 1.8em;
+    color: #f39c12;
+}
+
+.price-card p {
+    font-size: 1.1em;
+}
+
+.price-card .price {
+    font-size: 1.5em;
+    color: #e67e22;
+    font-weight: 700;
+}
+
+.price-card button {
+    margin-top: 15px;
+    background-color: #f39c12;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 1.1em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.price-card button:hover {
+    background-color: #e67e22;
+}
+
+/* Features Section */
+.features {
+    background-color: #1f2a44;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.features-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature-item {
+    background-color: #34495e;
+    padding: 30px;
+    border-radius: 10px;
+    width: 250px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.feature-item h3 {
+    font-size: 1.5em;
+    color: #f39c12;
+}
+
+.feature-item p {
+    font-size: 1.1em;
+}
+
+/* Testimonials Section */
+.testimonials {
+    background-color: #2c3e50;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.testimonial-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.testimonial {
+    background-color: #34495e;
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.testimonial p {
+    font-size: 1.1em;
+}
+
+.testimonial h4 {
+    font-size: 1.3em;
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+/* Countdown Section */
+.countdown {
+    background-color: #111;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+#timer {
+    font-size: 3em;
+    color: #e67e22;
+    font-weight: bold;
+}
+
+/* Contact Section */
+.contact {
+    background-color: #34495e;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+form input, form textarea {
     padding: 10px;
+    font-size: 1.1em;
+    border-radius: 5px;
+    border: 1px solid #555;
 }
 
-footer p {
-    color: #fff;
+form button {
+    background-color: #f39c12;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 1.2em;
 }
 
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-    }
+form button:hover {
+    background-color: #e67e22;
+}
 
-    .feature-card {
-        padding: 15px;
-    }
-
-    #explore-btn {
-        width: 100%;
-    }
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #111;
 }
